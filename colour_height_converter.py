@@ -177,18 +177,34 @@ ax2.imshow(test)
 #plt.plot(filt,np.mean(counter))
 
 
+xx = np.linspace(0,5,tnew.shape[1])
+yy = np.linspace(0,5,tnew.shape[0])
 
-#xx = np.linspace(0,1,tnew.shape[1])
-#yy = np.linspace(0,1,tnew.shape[0])
-#
-#X,Y = np.meshgrid(xx,yy)
-#
-#
-#
-#fig = plt.figure()
-#ax = plt.axes(projection='3d')
+X,Y = np.meshgrid(xx,yy)
+
+Z = tnew
+
+from matplotlib import cm
+from matplotlib.ticker import LinearLocator
+
+fig = plt.figure()
+ax = plt.axes(projection='3d')
 #ax.plot_surface(X, Y, tnew)
-#
+surf = ax.plot_surface(X, Y, -Z, cmap=cm.coolwarm,  linewidth=0, antialiased=False)
+ax.view_init(elev=50, azim=-180)
+
+
+# Customize the z axis.
+#ax.set_zlim(-1.01, 1.01)
+#ax.zaxis.set_major_locator(LinearLocator(10))
+# A StrMethodFormatter is used automatically
+#ax.zaxis.set_major_formatter('{x:.02f}')
+
+# Add a color bar which maps values to colors.
+#fig.colorbar(surf, shrink=0.5, aspect=5)
+
+#plt.show()
+
 
 
 
